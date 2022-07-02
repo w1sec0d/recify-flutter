@@ -2,8 +2,12 @@ import "package:flutter/material.dart";
 
 void main() {
   // function principal que requiere Dart en cualquier programa
-  runApp(
-      const Recify()); // Corre un widget o componente y lo establece en toda la pantalla
+  runApp(MaterialApp(
+    home: const Recify(),
+    theme: ThemeData(
+      primarySwatch: Colors.green,
+    ),
+  )); // Corre un widget o componente y lo establece en toda la pantalla
 }
 
 class Recify extends StatelessWidget {
@@ -21,12 +25,37 @@ class Recify extends StatelessWidget {
           title: const Text("Recify"),
           backgroundColor: Colors.lightGreen,
         ),
-        body: Container(
-          child: Center(child: const Text("Hola Recify!")),
+        body: Center(
+          //El widget center centra todo
+          child: Container(
+            // El widget container se usa para cambiar la decoracion o posicion de otro widget
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.amber,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 10,
+                )
+              ],
+            ),
+            width: 200,
+            height: 200,
+            padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
+            child: const Text(
+              "Soy un texto bonito",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Inicio',
