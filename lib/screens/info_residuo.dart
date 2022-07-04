@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recify/data/residuos.dart';
+import 'package:recify/screens/widgets/item_residuo_tipo.dart';
 
 class InfoResiduo extends StatelessWidget {
   final Residuo residuo;
@@ -9,13 +10,50 @@ class InfoResiduo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(residuo.nombre),
+        backgroundColor: Colors.lightGreen,
       ),
-      body: Image.network(
-        residuo.imagen,
-        width: double.infinity,
-        height: 300,
-        fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.network(
+              residuo.imagen,
+              width: double.infinity, // Tan ancho como sea posible
+              height: 300,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    residuo.nombre,
+                    style: const TextStyle(
+                        fontSize: 35, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 5),
+                    child: Text(
+                      "• Se degrada en: ${residuo.tiempoDegradacion}",
+                      style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                  ItemResiduoTipo(tipo: residuo.tipo),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    child: Text(
+                      "${residuo.descripcion}. Puedes desecharlo aquí:",
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

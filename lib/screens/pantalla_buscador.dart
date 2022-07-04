@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:font_awesome_flutter/font_awesome_flutter.dart"; // Importa más iconos a FLutter
+// Importa más iconos a FLutter
 import 'package:recify/screens/widgets/buscador.dart';
 import "package:recify/screens/widgets/item_residuo_tipo.dart";
 import "package:recify/screens/info_residuo.dart";
@@ -30,58 +30,13 @@ class _PantallaBuscadorState extends State<PantallaBuscador> {
             itemCount: residuosActuales.length,
             itemBuilder: (BuildContext context, int index) {
               final residuo = residuosActuales[index];
-              ItemResiduoTipo subtituloResiduo = const ItemResiduoTipo(
-                tipo: "desconocido",
-                iconoTipo: Icon(Icons.question_mark),
-                colorFondo: Colors.black,
-              );
-
-              switch (residuo.tipo) {
-                // Dependiendo del tipo de residuo se establece el subtitulo caracteristico
-                case "reciclable":
-                  subtituloResiduo = const ItemResiduoTipo(
-                      tipo: "Reciclable",
-                      iconoTipo: Icon(
-                        FontAwesomeIcons.recycle,
-                        color: Colors.white,
-                      ),
-                      colorFondo: Colors.grey);
-                  break;
-                case "no-aprovechable":
-                  subtituloResiduo = const ItemResiduoTipo(
-                      tipo: "No Aprovechable",
-                      iconoTipo: Icon(
-                        FontAwesomeIcons.trash,
-                        color: Colors.white,
-                      ),
-                      colorFondo: Colors.black);
-                  break;
-                case "organico":
-                  subtituloResiduo = const ItemResiduoTipo(
-                      tipo: "Organico",
-                      iconoTipo: Icon(
-                        FontAwesomeIcons.appleWhole,
-                        color: Colors.white,
-                      ),
-                      colorFondo: Colors.green);
-                  break;
-                case "especial":
-                  subtituloResiduo = const ItemResiduoTipo(
-                      tipo: "Especial",
-                      iconoTipo: Icon(
-                        FontAwesomeIcons.triangleExclamation,
-                        color: Colors.white,
-                      ),
-                      colorFondo: Colors.orange);
-                  break;
-              }
 
               return Container(
                 // Se construye cada uno de los widgets que representan los elementos
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                 child: ListTile(
                   title: Text(residuo.nombre),
-                  subtitle: subtituloResiduo,
+                  subtitle: ItemResiduoTipo(tipo: residuo.tipo),
                   onTap: () => {
                     Navigator.push(
                         context,

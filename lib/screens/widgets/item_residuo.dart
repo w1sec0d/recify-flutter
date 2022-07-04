@@ -22,7 +22,7 @@
 //         colorFondo: Colors.black);
 
 //     switch (tipo) {
-//       case "reciclable":
+//       case "Reciclable":
 //         subtituloResiduo = const ItemResiduoTipo(
 //             tipo: "Reciclable",
 //             iconoTipo: Icon(
@@ -31,7 +31,7 @@
 //             ),
 //             colorFondo: Colors.grey);
 //         break;
-//       case "no-aprovechable":
+//       case "No Aprovechable":
 //         subtituloResiduo = const ItemResiduoTipo(
 //             tipo: "No Aprovechable",
 //             iconoTipo: Icon(
@@ -40,7 +40,7 @@
 //             ),
 //             colorFondo: Colors.black);
 //         break;
-//       case "organico":
+//       case "Organico":
 //         subtituloResiduo = const ItemResiduoTipo(
 //             tipo: "Organico",
 //             iconoTipo: Icon(
@@ -49,7 +49,7 @@
 //             ),
 //             colorFondo: Colors.green);
 //         break;
-//       case "especial":
+//       case "Especial":
 //         subtituloResiduo = const ItemResiduoTipo(
 //             tipo: "Especial",
 //             iconoTipo: Icon(

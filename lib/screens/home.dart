@@ -40,9 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           "Recify",
-          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
         ),
         backgroundColor: Colors.lightGreen,
+        centerTitle: true,
       ),
 
       // Configura el cuerpo de la app, con pageView para establecer el cambio de pantallas
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             pantallaActual = nuevoIndex;
           });
         },
-        children: const [
+        children: [
           // Como children van cada una de las pantallas separadas por comas
           PantallaInicio(),
           PantallaBuscador(),
