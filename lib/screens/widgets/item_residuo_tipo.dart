@@ -28,7 +28,7 @@ class ItemResiduoTipo extends StatelessWidget {
           children: [
             iconoTipo,
             Container(
-              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Text(
                 tipo,
                 textAlign: TextAlign.center,

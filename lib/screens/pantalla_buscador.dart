@@ -1,50 +1,32 @@
 import "package:flutter/material.dart";
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:recify/screens/widgets/item_residuo_tipo.dart';
-import "info_residuo.dart";
-import '../data/residuos.dart';
+import "package:font_awesome_flutter/font_awesome_flutter.dart"; // Importa más iconos a FLutter
+import 'package:recify/screens/widgets/buscador.dart';
+import "package:recify/screens/widgets/item_residuo_tipo.dart";
+import "package:recify/screens/info_residuo.dart";
+import "package:recify/data/residuos.dart";
 
-class Buscador extends StatefulWidget {
-  const Buscador({Key? key}) : super(key: key);
+class PantallaBuscador extends StatefulWidget {
+  const PantallaBuscador({Key? key}) : super(key: key);
 
   @override
-  State<Buscador> createState() => _BuscadorState();
+  State<PantallaBuscador> createState() => _PantallaBuscadorState();
 }
 
-class _BuscadorState extends State<Buscador> {
+class _PantallaBuscadorState extends State<PantallaBuscador> {
+  // Lista donde se iran guardando los residuos filtrados
   List<Residuo> residuosActuales = residuos;
 
   @override
   Widget build(BuildContext context) {
+    // La widget de pantalla devuelve una columna con dos widgets, el buscador y la lista de residuos
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: const Color.fromARGB(255, 233, 231, 231),
-          ),
-          margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: const InputDecoration(
-                    hintText: "Busca un residuo",
-                    border: InputBorder.none,
-                  ),
-                  onChanged: buscarResiduo,
-                ),
-              ),
-              const Icon(
-                FontAwesomeIcons.magnifyingGlass,
-                color: Color.fromARGB(255, 124, 123, 123),
-              )
-            ],
-          ),
-        ),
+        Buscador(
+            funcionBuscarResiduo:
+                buscarResiduo), // Al buscador se le facilita una funcion que filtra el array de residuos
         Expanded(
           child: ListView.separated(
+            // Una lista que mapea cada uno de los elementos de residuo en pantalla, y los separa con un elemento Divider()
             itemCount: residuosActuales.length,
             itemBuilder: (BuildContext context, int index) {
               final residuo = residuosActuales[index];
@@ -55,6 +37,7 @@ class _BuscadorState extends State<Buscador> {
               );
 
               switch (residuo.tipo) {
+                // Dependiendo del tipo de residuo se establece el subtitulo caracteristico
                 case "reciclable":
                   subtituloResiduo = const ItemResiduoTipo(
                       tipo: "Reciclable",
@@ -94,7 +77,8 @@ class _BuscadorState extends State<Buscador> {
               }
 
               return Container(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                // Se construye cada uno de los widgets que representan los elementos
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                 child: ListTile(
                   title: Text(residuo.nombre),
                   subtitle: subtituloResiduo,
@@ -123,6 +107,7 @@ class _BuscadorState extends State<Buscador> {
   }
 
   void buscarResiduo(String busqueda) {
+    // Lo que hace la funcion es buscar en el array de residuos inicial el residuo buscado, y establece el arrayfiltrado como estado del widget
     final sugerenciasDeBusqueda = residuos.where((residuo) {
       final nombreResiduo = residuo.nombre.toLowerCase();
       final input = busqueda.toLowerCase();

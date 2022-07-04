@@ -12,74 +12,74 @@ class Residuo {
 }
 
 const residuos = [
-  const Residuo(
+  Residuo(
     id: 0,
     nombre: "Botella de plástico",
     tipo: "reciclable",
     imagen:
         "https://image.freepik.com/psd-gratis/maqueta-botella-agua-dulce_358694-287.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 1,
     nombre: "Paquetes de alimentos",
     tipo: "no-aprovechable",
     imagen:
         "https://image.freepik.com/vector-gratis/concepto-paquete-chips_1284-35832.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 2,
     nombre: "Botella de vidrio",
     tipo: "reciclable",
     imagen:
         "https://image.freepik.com/foto-gratis/licor-botella-destileria-vodka-vidrio_1350-72.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 3,
     nombre: "Residuos de fruta",
     tipo: "organico",
     imagen:
         "https://image.freepik.com/foto-gratis/papelera-reciclaje-vista-superior-verduras-organicas_23-2148666785.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 4,
     nombre: "Residuos de barrido",
     tipo: "no-aprovechable",
     imagen:
         "https://image.freepik.com/vector-gratis/productos-limpieza-caricaturas-hogar_18591-52042.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 5,
     nombre: "Bateria",
     tipo: "especial",
     imagen: "https://image.freepik.com/free-psd/battery-mockup_1310-481.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 6,
     nombre: "Lata de refresco/bebida alcohólica",
     tipo: "reciclable",
     imagen:
         "https://image.freepik.com/free-vector/soda-can-aluminium-white_1308-32368.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 7,
     nombre: "Batería",
     tipo: "especial",
     imagen: "https://image.freepik.com/free-psd/battery-mockup_1310-481.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 8,
     nombre: "Lata de refresco/bebida alcohólica",
     tipo: "reciclable",
     imagen:
         "https://image.freepik.com/free-vector/soda-can-aluminium-white_1308-32368.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 9,
     nombre: "Bateria",
     tipo: "especial",
     imagen: "https://image.freepik.com/free-psd/battery-mockup_1310-481.jpg",
   ),
-  const Residuo(
+  Residuo(
     id: 10,
     nombre: "Lata de refresco/bebida alcohólica",
     tipo: "reciclable",

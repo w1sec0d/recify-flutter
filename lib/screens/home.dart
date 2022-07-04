@@ -1,7 +1,11 @@
 import "package:flutter/material.dart";
-import 'package:recify/screens/buscador.dart';
+import "package:recify/screens/pantalla_buscador.dart";
+import 'package:recify/screens/pantalla_inicio.dart';
+import 'package:recify/screens/pantalla_mapa.dart';
 
 class HomeScreen extends StatefulWidget {
+  // Crea un widget con estado que representa el home de la app
+  // Le da a la intanciación una llave unica con la que flutter puede identificarla facilmente
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -9,48 +13,55 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _pantallaActual = 0;
-  PageController controladorDePantalla = PageController();
+  int pantallaActual = 1;
+  PageController controladorDePantalla = PageController(initialPage: 1);
 
   void cambioDePantalla(int nuevoIndex) {
+    //funcion que realiza el cambio de pantalla
     setState(() {
-      _pantallaActual = nuevoIndex;
+      // cambia el estado de pantalla actual, al nuevo index
+      pantallaActual = nuevoIndex;
     });
-    controladorDePantalla.animateToPage(_pantallaActual,
-        duration: const Duration(milliseconds: 250), curve: Curves.easeIn);
+
+    //Usa el controlador de pantalla para animar hacia una nueva pantalla
+    controladorDePantalla.animateToPage(
+      pantallaActual,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeIn,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //El scaffold es la estructura basica de la app, dentro de el se especifica la barra de la app y el contenido de la app
+      // El scaffold es la estructura basica de la app, dentro de el se especifica la barra de la app y el contenido de la app
+
+      // Configura la barra superior de la app
       appBar: AppBar(
-        title: const Text("Recify"),
+        title: const Text(
+          "Recify",
+          textAlign: TextAlign.center,
+        ),
         backgroundColor: Colors.lightGreen,
       ),
 
+      // Configura el cuerpo de la app, con pageView para establecer el cambio de pantallas
       body: PageView(
         controller: controladorDePantalla,
         onPageChanged: (nuevoIndex) {
           setState(() {
-            _pantallaActual = nuevoIndex;
+            pantallaActual = nuevoIndex;
           });
         },
-        children: <Widget>[
-          Image.network(
-            "https://pps.whatsapp.net/v/t61.24694-24/213739895_995813467969746_930655826706782599_n.jpg?ccb=11-4&oh=01_AVxHQl73KHtM9Us0ZwavPIPwMFlhR4LOjiMBSWUFcLQ_pQ&oe=62D26EA0",
-            width: 300,
-            height: 300,
-            fit: BoxFit.scaleDown,
-          ),
-          const Buscador(),
-          const Center(
-            //El widget center centra todo
-            child: Text("asd"),
-          ),
+        children: const [
+          // Como children van cada una de las pantallas separadas por comas
+          PantallaInicio(),
+          PantallaBuscador(),
+          PantallaMapa(),
         ],
       ),
 
+      // Se configura la barra de navegacion inferior
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -67,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Mapa',
           ),
         ],
-        currentIndex: _pantallaActual,
+        currentIndex: pantallaActual,
         selectedItemColor: Colors.green,
         onTap: cambioDePantalla,
       ),
