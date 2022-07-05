@@ -48,13 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Configura el cuerpo de la app, con pageView para establecer el cambio de pantallas
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: controladorDePantalla,
         onPageChanged: (nuevoIndex) {
           setState(() {
             pantallaActual = nuevoIndex;
           });
         },
-        children: [
+        children: const [
           // Como children van cada una de las pantallas separadas por comas
           PantallaInicio(),
           PantallaBuscador(),

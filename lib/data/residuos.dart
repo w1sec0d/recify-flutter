@@ -1,3 +1,5 @@
+// Configura la clase residuo y crea la lista residuos[]
+
 class Residuo {
   final int id;
   final String nombre;
