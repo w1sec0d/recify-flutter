@@ -13,8 +13,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int pantallaActual = 1;
-  PageController controladorDePantalla = PageController(initialPage: 1);
+  int pantallaActual = 0;
+  PageController controladorDePantalla = PageController(initialPage: 0);
 
   void cambioDePantalla(int nuevoIndex) {
     //funcion que realiza el cambio de pantalla
@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Configura la barra superior de la app
       appBar: AppBar(
-        title: const Text(
-          "Recify",
-          style: TextStyle(fontSize: 25),
+        title: SizedBox(
+          height: 40,
+          child: Image.network("https://i.ibb.co/hc6YTdL/logo-Blanco.png"),
         ),
         backgroundColor: Colors.lightGreen,
         centerTitle: true,
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Configura el cuerpo de la app, con pageView para establecer el cambio de pantallas
       body: PageView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: controladorDePantalla,
         onPageChanged: (nuevoIndex) {
           setState(() {
@@ -57,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         children: const [
           // Como children van cada una de las pantallas separadas por comas
-          PantallaInicio(),
           PantallaBuscador(),
           PantallaMapa(),
         ],
@@ -67,10 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.question_mark),
-            label: '¿Cómo usar?',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Buscador',

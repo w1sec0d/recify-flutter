@@ -10,7 +10,7 @@ class MarcadorResiduo {
 
 Set<MarcadorResiduo> marcadoresResiduos = {
   MarcadorResiduo(
-    Marker(
+    const Marker(
       markerId: MarkerId("1"),
       position: LatLng(4.634791, -74.085880),
       infoWindow: InfoWindow(
@@ -19,7 +19,7 @@ Set<MarcadorResiduo> marcadoresResiduos = {
       ),
       icon: BitmapDescriptor.defaultMarker,
     ),
-    ["Reciclables"],
+    ["Reciclable"],
   ),
   MarcadorResiduo(
     const Marker(
@@ -31,7 +31,7 @@ Set<MarcadorResiduo> marcadoresResiduos = {
       ),
       icon: BitmapDescriptor.defaultMarker,
     ),
-    ["Botellas"],
+    ["Reciclable", "Botellas"],
   ),
   MarcadorResiduo(
     const Marker(
@@ -68,5 +68,29 @@ Set<MarcadorResiduo> marcadoresResiduos = {
       icon: BitmapDescriptor.defaultMarker,
     ),
     ["No Aprovechable", "Organico"],
+  ),
+  MarcadorResiduo(
+    const Marker(
+      markerId: MarkerId("5"),
+      position: LatLng(4.633964, -74.086875),
+      infoWindow: InfoWindow(
+        title: 'Caneca residuos peligrosos',
+        snippet: 'Caneca para elementos peligrosos',
+      ),
+      icon: BitmapDescriptor.defaultMarker,
+    ),
+    ["Peligroso"],
+  ),
+  MarcadorResiduo(
+    const Marker(
+      markerId: MarkerId("6"),
+      position: LatLng(4.635313, -74.086139),
+      infoWindow: InfoWindow(
+        title: 'Caneca residuos peligrosos',
+        snippet: 'Caneca para elementos peligrosos',
+      ),
+      icon: BitmapDescriptor.defaultMarker,
+    ),
+    ["Organico"],
   ),
 };

@@ -37,12 +37,13 @@ class ItemResiduoTipo extends StatelessWidget {
         );
         colorFondo = Colors.green;
         break;
-      case "Especial":
+
+      default:
         iconoTipo = const Icon(
           FontAwesomeIcons.triangleExclamation,
           color: Colors.white,
         );
-        colorFondo = Colors.orange;
+        colorFondo = Colors.red;
         break;
     }
 

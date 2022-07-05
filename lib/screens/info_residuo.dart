@@ -22,69 +22,66 @@ class InfoResiduo extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.network(
-                residuo.imagen,
-                width: double.infinity, // Tan ancho como sea posible
-                height: 300,
-                fit: BoxFit.cover,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      residuo.nombre,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.network(
+              residuo.imagen,
+              width: double.infinity, // Tan ancho como sea posible
+              height: 300,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    residuo.nombre,
+                    style: const TextStyle(
+                        fontSize: 35, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 5),
+                    child: Text(
+                      "• Se degrada en: ${residuo.tiempoDegradacion}",
                       style: const TextStyle(
-                          fontSize: 35, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          color: Colors.grey,
+                          fontStyle: FontStyle.italic),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 5),
-                      child: Text(
-                        "• Se degrada en: ${residuo.tiempoDegradacion}",
-                        style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic),
-                      ),
+                  ),
+                  ItemResiduoTipo(tipo: residuo.tipo),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    child: Text(
+                      "${residuo.descripcion}. Aqui puedes ver los puntos más cercanos:",
+                      style: const TextStyle(fontSize: 20),
                     ),
-                    ItemResiduoTipo(tipo: residuo.tipo),
-                    Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      child: Text(
-                        "${residuo.descripcion}. Puedes desecharlo aquí:",
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    FutureBuilder(
-                      future: obtenerPosicionCamara(),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          return SizedBox(
-                            width: double.infinity,
-                            height: 300,
-                            child: GoogleMap(
-                              initialCameraPosition: snapshot.data,
-                              myLocationEnabled: true,
-                              markers: marcadoresFiltrados,
-                              mapType: MapType.normal,
-                            ),
-                          );
-                        } else {
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                  FutureBuilder(
+                    future: obtenerPosicionCamara(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 300,
+                          child: GoogleMap(
+                            initialCameraPosition: snapshot.data,
+                            myLocationEnabled: true,
+                            markers: marcadoresFiltrados,
+                            mapType: MapType.normal,
+                          ),
+                        );
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
